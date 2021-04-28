@@ -1,13 +1,13 @@
-.fullcontent{
+.fullcontent {
     width: 50%;
 }
-canvas{
+canvas {
     width: 50% !important;
     height: 100% !important;
-    position: fixed  !important;
+    position: fixed !important;
     right: 0 !important;
 }
-body{
+body {
     display: flex;
-    width: 100%
+    width: 100%;
 }
