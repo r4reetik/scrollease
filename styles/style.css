@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     background-color: #fff;
     border: 3px solid #0f123f;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .title {
@@ -90,4 +90,26 @@ h1 {
 
 .text-red {
     color: #ff7466;
+}
+
+.overlay-1 {
+    position: relative;
+    top: -100%;
+    z-index: 9;
+    background: #0f123f;
+    width: 99%;
+    height: 40%;
+    margin: auto;
+    opacity: 0.2;
+}
+
+.overlay-2 {
+    position: relative;
+    bottom: 84%;
+    z-index: 9;
+    background: #0f123f;
+    width: 99%;
+    height: 40%;
+    margin: auto;
+    opacity: 0.2;
 }
