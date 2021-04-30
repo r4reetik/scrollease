@@ -137,8 +137,8 @@
                             <div class="row mt-4">
                                 <div class="col video-wrap">
                                     <video id="video" playsinline autoplay></video>
-                                    <div class="overlay-1"></div>
-                                    <div class="overlay-2"></div>
+                                    <div id="overlay-1"></div>
+                                    <div id="overlay-2"></div>
                                 </div>
                             </div>
                             <div class="row" style="font-family: 'Montserrat', sans-serif">
@@ -147,7 +147,7 @@
                                         type="range"
                                         class="form-range"
                                         min="0"
-                                        max="3"
+                                        max="10"
                                         id="rangeHeight"
                                     />
                                     <label for="rangeHeight" class="form-label text-blue">
@@ -158,8 +158,8 @@
                                     <input
                                         type="range"
                                         class="form-range"
-                                        min="0"
-                                        max="4"
+                                        min="10"
+                                        max="76"
                                         id="rangePosition"
                                     />
                                     <label for="rangePosition" class="form-label text-blue">
@@ -197,6 +197,5 @@
         ></script>
 
         <script src="scripts/script.js"></script>
-        <script src="scripts/face.js"></script>
     </body>
 </html>

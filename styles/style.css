@@ -92,24 +92,24 @@ h1 {
     color: #ff7466;
 }
 
-.overlay-1 {
+#overlay-1 {
     position: relative;
     top: -100%;
     z-index: 9;
     background: #0f123f;
     width: 99%;
-    height: 40%;
+    height: 48%;
     margin: auto;
-    opacity: 0.2;
+    opacity: 0.1;
 }
 
-.overlay-2 {
+#overlay-2 {
     position: relative;
-    bottom: 84%;
+    bottom: 100%;
     z-index: 9;
     background: #0f123f;
     width: 99%;
-    height: 40%;
+    height: 48%;
     margin: auto;
-    opacity: 0.2;
+    opacity: 0.1;
 }

@@ -34,4 +34,29 @@ function handleSuccess(stream) {
 }
 
 // Load init
-init();
+// init();
+
+let oHeight = 5;
+let oPosition = 43;
+
+document.getElementById("overlay-1").style.height = "43%";
+document.getElementById("overlay-2").style.bottom = "90%";
+document.getElementById("overlay-2").style.height = "43%";
+
+document.getElementById("rangeHeight").addEventListener("input", (e) => {
+    let cHeight = document.getElementById("rangeHeight").value - oHeight;
+    oHeight = document.getElementById("rangeHeight").value;
+
+    document.getElementById("overlay-1").style.height = oPosition - cHeight + "%";
+    document.getElementById("overlay-2").style.height = 96 - oPosition - oHeight * 2 + "%";
+    oPosition -= cHeight;
+    document.getElementById("rangePosition").value = oPosition;
+    document.getElementById("overlay-2").style.bottom = 100 - oHeight * 2 + "%";
+});
+
+document.getElementById("rangePosition").addEventListener("input", (e) => {
+    oPosition = document.getElementById("rangePosition").value;
+
+    document.getElementById("overlay-1").style.height = oPosition + "%";
+    document.getElementById("overlay-2").style.height = 96 - oPosition - oHeight * 2 + "%";
+});
