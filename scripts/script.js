@@ -50,12 +50,12 @@ function doScroll(eyeValue) {
 
     if (rEye < oPosition) {
         dIframe.scrollBy({
-            top: -10,
+            top: -20,
             behavior: "smooth",
         });
-    } else if (rEye > oPosition + oHeight * 2) {
+    } else if (rEye > oPosition + oHeight * 2 + 5) {
         dIframe.scrollBy({
-            top: 10,
+            top: 20,
             behavior: "smooth",
         });
     }
@@ -164,12 +164,11 @@ document.getElementById("rangePosition").addEventListener("input", (e) => {
 
 document.getElementById("uploadButton").addEventListener("click", () => {
     let pdffile_url = URL.createObjectURL(document.getElementById("fileUpload").files[0]);
-    document.getElementById("docIframe").setAttribute("src", pdffile_url);
+    document.getElementById("docIframe").setAttribute("src", pdffile_url + "#toolbar=0");
 });
 
-// setTimeout(() => {
-//     console.log(window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0]);
-//     // window.frames["docIframe"].contentDocument.scrollTop = 400;
-
-//     window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0].;
-// }, 2000);
+setTimeout(() => {
+    // console.log(window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0]);
+    window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0].style.overflowY =
+        "hidden";
+}, 2000);
