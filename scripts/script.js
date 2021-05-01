@@ -156,7 +156,6 @@ document.getElementById("rangePosition").addEventListener("input", (e) => {
 });
 
 document.getElementById("uploadButton").addEventListener("click", () => {
-    let pdffile = document.getElementById("fileUpload").files[0];
-    let pdffile_url = URL.createObjectURL(pdffile);
-    $("#docIframe").attr("src", pdffile_url);
+    let pdffile_url = URL.createObjectURL(document.getElementById("fileUpload").files[0]);
+    document.getElementById("docIframe").setAttribute("src", pdffile_url);
 });
