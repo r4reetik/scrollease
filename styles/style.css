@@ -130,6 +130,9 @@ h1 {
 canvas {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
 }
 
