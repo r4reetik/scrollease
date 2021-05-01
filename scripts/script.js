@@ -45,12 +45,19 @@ const midrange = firstpart + 50;
 
 function doScroll(eyeValue) {
     let rEye = eyeValue / 10;
-    let dIframe = window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0];
+    let dIframe = document.getElementById("divIframe");
+    window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0];
 
     if (rEye < oPosition) {
-        dIframe.click();
+        dIframe.scrollBy({
+            top: -10,
+            behavior: "smooth",
+        });
     } else if (rEye > oPosition + oHeight * 2) {
-        dIframe.click();
+        dIframe.scrollBy({
+            top: 10,
+            behavior: "smooth",
+        });
     }
 }
 
@@ -62,7 +69,7 @@ function setup() {
     capture.size(w, h);
     capture.hide();
 
-    frameRate(2);
+    frameRate(24);
     colorMode(HSB);
     background(0);
 

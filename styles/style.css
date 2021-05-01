@@ -132,3 +132,9 @@ canvas {
     transform: scaleX(-1);
     display: none;
 }
+
+#divIframe {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* height: 600px; */
+}
