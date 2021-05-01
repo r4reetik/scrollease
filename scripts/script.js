@@ -48,11 +48,9 @@ function doScroll(eyeValue) {
     let dIframe = document.getElementById("docIframe");
 
     if (rEye < oPosition) {
-        console.log("Up");
-        // myIframe.contentWindow.scrollBy({ top: 20 });
+        dIframe.contentWindow.scrollTo(0, 10000);
     } else if (rEye > oPosition + oHeight * 2) {
-        console.log("Down", dIframe);
-        dIframe.contentWindow.scrollTo(0, 200);
+        dIframe.contentWindow.scrollTo(0, 2000);
     }
 }
 
@@ -156,3 +154,9 @@ document.getElementById("rangePosition").addEventListener("input", (e) => {
     document.getElementById("overlay-1").style.height = oPosition + "%";
     document.getElementById("overlay-2").style.height = 96 - oPosition - oHeight * 2 + "%";
 });
+
+function PreviewImage() {
+    let pdffile = document.getElementById("fileUpload").files[0];
+    let pdffile_url = URL.createObjectURL(pdffile);
+    $("#docIframe").attr("src", pdffile_url);
+}
