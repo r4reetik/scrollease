@@ -45,12 +45,12 @@ const midrange = firstpart + 50;
 
 function doScroll(eyeValue) {
     let rEye = eyeValue / 10;
-    let dIframe = document.getElementById("docIframe");
+    let dIframe = window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0];
 
     if (rEye < oPosition) {
-        dIframe.contentWindow.scrollTo(0, 10000);
+        dIframe.click();
     } else if (rEye > oPosition + oHeight * 2) {
-        dIframe.contentWindow.scrollTo(0, 2000);
+        dIframe.click();
     }
 }
 
@@ -159,3 +159,10 @@ document.getElementById("uploadButton").addEventListener("click", () => {
     let pdffile_url = URL.createObjectURL(document.getElementById("fileUpload").files[0]);
     document.getElementById("docIframe").setAttribute("src", pdffile_url);
 });
+
+// setTimeout(() => {
+//     console.log(window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0]);
+//     // window.frames["docIframe"].contentDocument.scrollTop = 400;
+
+//     window.frames["docIframe"].contentDocument.getElementsByTagName("embed")[0].;
+// }, 2000);
