@@ -155,8 +155,8 @@ document.getElementById("rangePosition").addEventListener("input", (e) => {
     document.getElementById("overlay-2").style.height = 96 - oPosition - oHeight * 2 + "%";
 });
 
-function PreviewImage() {
+document.getElementById("uploadButton").addEventListener("click", () => {
     let pdffile = document.getElementById("fileUpload").files[0];
     let pdffile_url = URL.createObjectURL(pdffile);
     $("#docIframe").attr("src", pdffile_url);
-}
+});
