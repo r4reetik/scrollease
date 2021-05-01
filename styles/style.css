@@ -5,6 +5,19 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .content-row {
     background-color: #f4f7fc;
     margin: 10px;
@@ -112,4 +125,10 @@ h1 {
     height: 48%;
     margin: auto;
     opacity: 0.1;
+}
+
+canvas {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    display: none;
 }

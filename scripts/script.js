@@ -17,8 +17,7 @@ const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const errorMsgElement = document.querySelector("span#errorMsg");
 
-// Access webcam
-async function init() {
+async function vInit() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia(videoConstraints);
         handleSuccess(stream);
@@ -27,14 +26,111 @@ async function init() {
     }
 }
 
-// Success
 function handleSuccess(stream) {
     window.stream = stream;
     video.srcObject = stream;
 }
 
-// Load init
-// init();
+vInit();
+
+let capture = null;
+let tracker = null;
+let positions = null;
+let w = 0,
+    h = 0;
+
+const fullScreen = window.screen.height;
+const firstpart = Math.floor(fullScreen / 3);
+const midrange = firstpart + 50;
+
+function doScroll(eyeValue) {
+    let rEye = eyeValue / 10;
+    let dIframe = document.getElementById("docIframe");
+
+    if (rEye < oPosition) {
+        console.log("Up");
+        // myIframe.contentWindow.scrollBy({ top: 20 });
+    } else if (rEye > oPosition + oHeight * 2) {
+        console.log("Down", dIframe);
+        dIframe.contentWindow.scrollTo(0, 200);
+    }
+}
+
+function setup() {
+    w = 1777;
+    h = 1000;
+    capture = createCapture(VIDEO);
+    createCanvas(w, h);
+    capture.size(w, h);
+    capture.hide();
+
+    frameRate(2);
+    colorMode(HSB);
+    background(0);
+
+    tracker = new clm.tracker();
+    tracker.init();
+    tracker.start(capture.elt);
+}
+
+function draw() {
+    image(capture, 0, 0, w, h);
+    positions = tracker.getCurrentPosition();
+    if (positions.length > 0) {
+        const eye1 = {
+            outline: [23, 63, 24, 64, 25, 65, 26, 66].map(getPoint),
+            center: getPoint(27),
+            top: getPoint(24),
+            bottom: getPoint(26),
+        };
+        const eye2 = {
+            outline: [28, 67, 29, 68, 30, 69, 31, 70].map(getPoint),
+            center: getPoint(32),
+            top: getPoint(29),
+            bottom: getPoint(31),
+        };
+
+        doScroll(Math.floor(eye1.center.y));
+        doScroll(Math.floor(eye2.center.y));
+    }
+}
+
+function getPoint(index) {
+    return createVector(positions[index][0], positions[index][1]);
+}
+
+function drawEye(eye, irisColor) {
+    // console.log(eye)
+    noFill();
+    stroke(255, 0.4);
+    drawEyeOutline(eye);
+
+    const irisRadius = min(eye.center.dist(eye.top), eye.center.dist(eye.bottom));
+    const irisSize = irisRadius * 2;
+    noStroke();
+    fill(irisColor);
+    ellipse(eye.center.x, eye.center.y, irisSize, irisSize);
+
+    const pupilSize = irisSize / 3;
+    fill(0, 0.6);
+    ellipse(eye.center.x, eye.center.y, pupilSize, pupilSize);
+}
+
+function drawEyeOutline(eye) {
+    beginShape();
+    const firstPoint = eye.outline[0];
+    eye.outline.forEach((p, i) => {
+        curveVertex(p.x, p.y);
+        if (i === 0) {
+            curveVertex(firstPoint.x, firstPoint.y);
+        }
+        if (i === eye.outline.length - 1) {
+            curveVertex(firstPoint.x, firstPoint.y);
+            curveVertex(firstPoint.x, firstPoint.y);
+        }
+    });
+    endShape();
+}
 
 let oHeight = 5;
 let oPosition = 43;
