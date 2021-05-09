@@ -39,10 +39,6 @@ let positions = null;
 let w = 0,
     h = 0;
 
-const fullScreen = window.screen.height;
-const firstpart = Math.floor(fullScreen / 3);
-const midrange = firstpart + 50;
-
 function doScroll(eyeValue) {
     let rEye = eyeValue / 10;
     let dIframe = document.getElementById("divIframe");
@@ -69,7 +65,7 @@ function setup() {
     capture.size(w, h);
     capture.hide();
 
-    frameRate(24);
+    frameRate(30);
     colorMode(HSB);
     background(0);
 
